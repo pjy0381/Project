@@ -1,0 +1,84 @@
+{{>layouts/header}}
+
+<script !src="">
+    const token = localStorage.getItem("token");
+    if(token == null || token.length == 0){
+        location.href = "/login";
+    }
+    function removeToken(){
+        window.localStorage.removeItem("token");
+        alert("로그아웃 되었습니다.");
+    }
+    function information(){
+        $.ajax({
+            url : "/security/subject/get",
+            type : 'post',
+            data : {
+                token : window.localStorage.getItem("token")
+            },
+            success : function(data) {
+                const member = JSON.parse(data);
+                let str = "이메일 : " + member.email+"\n";
+                str += "핸드폰 번호 : " + member.phone+"\n";
+                str += "나이 : " + member.age+"\n";
+                str += "주민번호 : " + member.frontSSN + " - *******" ;
+                alert(str);
+            },
+            error : function() {
+                alert("조회 실패");
+            }
+        });
+    }
+    function updatePwd(){
+        let member;
+        $.ajax({
+            url : "/security/subject/get",
+            type : 'post',
+            data : {
+                token : window.localStorage.getItem("token")
+            },
+            success : function(data) {
+                member = JSON.parse(data);
+
+            },
+            error : function() {
+                alert("실패");
+            }
+        }).then((arg) => {
+            if(member.pwd == prompt("기존 비밀번호를 입력하세요")){
+                const newPwd = prompt("새로운 비밀번호를 입력하세요");
+                if(newPwd == prompt("다시 한번 입력하세요")){
+                    member.pwd = newPwd;
+                    $.ajax({
+                        type: "post",
+                        url : "/security/pwd/update",
+                        headers: {'Content-Type': 'application/json'},
+                        data : JSON.stringify(member)
+                    });
+                    alert("변경 완료! 다시 로그인 해주세요");
+                    window.localStorage.removeItem("token");
+                }
+            }else{
+                alert("비밀번호가 다릅니다.");
+            }
+        })
+    }
+</script>
+
+<div class="container">
+    <div class="input-form col-md-12 mx-auto">
+        <h4 class="mb-3">안녕하세요</h4>
+        <div class="mb-3">
+            <a href="" onclick="information()">회원정보 조회</a>
+        </div>
+        <div class="mb-3">
+            <a href="" onclick="updatePwd()">비밀번호 변경</a>
+        </div>
+        <div class="mb-3">
+            <a href="" onclick="removeToken()">로그아웃</a>
+        </div>
+    </div>
+
+</div>
+
+{{>layouts/footer}}

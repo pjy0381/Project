@@ -1,0 +1,11 @@
+{{>layouts/header}}
+<input type="hidden" id="msg" value="{{msg}}">
+<input type="hidden" id="url" value="{{url}}">
+<script !src="">
+    const msg = document.getElementById("msg").value;
+    const url = document.getElementById("url").value;
+    alert(msg);
+    document.location = url;
+
+</script>
+{{>layouts/footer}}
