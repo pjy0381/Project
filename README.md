@@ -2,6 +2,7 @@
 비패밀리 채용(인턴) 과제
 
 ##개발 도구
+
 #언어 : JAVA(JDK8 버전)
 #IDE : IntelliJ(Gradle 사용)
 #DB : MySQL 5.7
@@ -9,6 +10,7 @@
 #그외의 활용 기술 : Ajax, BootStrap, Git, Docker
 
 ##실행 가이드
+
 #DB : 테이블 1개 생성 
 create table member(
 frontSSN varchar(30),
