@@ -1,12 +1,12 @@
 ##Project Title
 비패밀리 채용(인턴) 과제
 
-###개발 도구
-##언어 : JAVA(JDK8 버전)
-##IDE : IntelliJ(Gradle 사용)
-##DB : MySQL 5.7
-##개발 구조: Spring Boot MVC패턴
-##그외의 활용 기술 : Ajax, BootStrap, Git, Docker
+##개발 도구
+#언어 : JAVA(JDK8 버전)
+#IDE : IntelliJ(Gradle 사용)
+#DB : MySQL 5.7
+#개발 구조: Spring Boot MVC패턴
+#그외의 활용 기술 : Ajax, BootStrap, Git, Docker
 
 ##실행 가이드
 
