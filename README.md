@@ -24,3 +24,5 @@ primary key(email)
 
 #MySQL 포트 : 3306
 #서버 포트 : 8080
+#db ID : root
+#db PW : root
